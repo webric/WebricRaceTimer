@@ -42,8 +42,10 @@ namespace WRT.Core.DAL
 
             return kontainrar;
         }
-        public static void Sätt(string namn, DateTime tillverkad, string serienummer)
+        public static bool Save(BLL.Competitor competitor)
         {
+            throw new NotImplementedException();
+
             var builder = new StringBuilder();
             builder.Append(" INSERT INTO [Container] (");
             builder.Append(" [Name] ");
@@ -62,8 +64,10 @@ namespace WRT.Core.DAL
 
             ExecuteQuery(builder.ToString(), ref parameters);
         }
-        private static BLL.Competitor PopulateObject(DataRow dr)
+
+        public static bool Start(Guid raceId, Guid competitorId, DateTime time)
         {
+            throw new NotImplementedException();
             var pos = new BLL.Competitor
             {
                     KontainerId = (int)dr.ItemArray[0],
@@ -71,6 +75,36 @@ namespace WRT.Core.DAL
                     Tillverkad = DateTime.Parse(dr.ItemArray[2].ToString()),
                     Serienummer = dr.ItemArray[3].ToString(),
                 };
+
+            return pos;
+        }
+
+        public static bool Stop(Guid raceId, Guid competitorId, DateTime time)
+        {
+            throw new NotImplementedException();
+            var pos = new BLL.Competitor
+            {
+                KontainerId = (int)dr.ItemArray[0],
+                Namn = dr.ItemArray[1].ToString(),
+                Tillverkad = DateTime.Parse(dr.ItemArray[2].ToString()),
+                Serienummer = dr.ItemArray[3].ToString(),
+            };
+
+            return pos;
+        }
+
+        private static BLL.Position PopulateObject(DataRow dr)
+        {
+            var pos = new BLL.Position
+            {
+                PositionId = (int)dr.ItemArray[0],
+                KontainerId = (int)dr.ItemArray[1],
+                Tidpunkt = DateTime.Parse(dr.ItemArray[2].ToString()),
+                Longitude = dr.ItemArray[3].ToString(),
+                Latitude = dr.ItemArray[4].ToString(),
+                Noggranhet = dr.ItemArray[5].ToString(),
+                Status = dr.ItemArray[6].ToString()
+            };
 
             return pos;
         }

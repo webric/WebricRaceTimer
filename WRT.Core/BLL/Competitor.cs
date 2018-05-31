@@ -5,17 +5,35 @@ namespace WRT.Core.BLL
 {
     partial class Competitor
     {
-        public List<Competitor> Hämta(int kontainerId)
+        public Competitor Save(string number, string name)
         {
-            return DAL.Competitor.Hämta(kontainerId);
+            var competitor = new Competitor
+            {
+                Id = Guid.NewGuid(),
+                Number = number,
+                Name = name
+            };
+
+            if (DAL.Competitor.Save(competitor))
+                return competitor;
+            else
+                return null;
         }
-        public List<Competitor> Hämta()
+
+        public bool Start(Guid raceId, Guid competitorId, DateTime time)
         {
-            return DAL.Competitor.Hämta(null);
+            if (DAL.Competitor.Start(raceId, competitorId, time))
+                return true;
+            else
+                return false;
         }
-        public void Sätt(string namn, DateTime tillverkad, string serienummer)
+
+        public bool Finnish(Guid raceId, Guid competitorId, DateTime time)
         {
-            DAL.Competitor.Sätt(namn, tillverkad, serienummer);
+            if (DAL.Competitor.Stop(raceId, competitorId, time))
+                return true;
+            else
+                return false;
         }
     }
 }

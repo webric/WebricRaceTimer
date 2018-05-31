@@ -11,31 +11,35 @@ namespace WRT.WCF
 {
     public class TimerService : ITimerService
     {
-        public string Init(int kontainerId, DateTime tidpunkt, string longitude, string latitude, string noggranhet)
+        public Race Init(string name)
         {
-            var pos = new Position();
-            pos.Sätt(kontainerId, tidpunkt, longitude, latitude, noggranhet);
-            return "";
+            var race = new Race();
+            return race.Init(name);
         }
-        public string SaveCompetitor(int kontainerId, DateTime tidpunkt, string longitude, string latitude, string noggranhet, string status)
+        public Competitor SaveCompetitor(string number, string name)
         {
-            return "";
+            var competitor = new Competitor();
+            return competitor.Save(number, name);
         }
-        public string FinnishCompetitor(int kontainerId, DateTime tidpunkt, string longitude, string latitude, string noggranhet, string status)
+        public bool StartCompetitor(Guid raceId, Guid competitorId, DateTime time)
         {
-            return "";
+            var competitor = new Competitor();
+            return competitor.Start(raceId, competitorId, time);
         }
-        public string Start(int kontainerId, DateTime tidpunkt, string longitude, string latitude, string noggranhet, string status)
+        public bool StartAll(Guid raceId)
         {
-            var pos = new Position();
-            pos.Sätt(kontainerId, tidpunkt, longitude, latitude, noggranhet, status);
-            return "";
+            var race = new Race();
+            return race.StartAll(raceId);
         }
-        public string Stopp(int kontainerId, DateTime tidpunkt, string longitude, string latitude, string noggranhet, string status)
+        public bool FinnishCompetitor(Guid raceId, Guid competitorId, DateTime time)
         {
-            var pos = new Position();
-            pos.Sätt(kontainerId, tidpunkt, longitude, latitude, noggranhet, status);
-            return "";
+            var competitor = new Competitor();
+            return competitor.Finnish(raceId, competitorId, time);
+        }
+        public bool FinnishRace(Guid raceId, DateTime time)
+        {
+            var race = new Race();
+            return race.Finnish(raceId, time);
         }
 
         public List<Competitor> GetCompetitors()
