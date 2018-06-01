@@ -41,11 +41,10 @@ namespace WRT.WCF
             var race = new Race();
             return race.Finnish(raceId, time);
         }
-
-        public List<Competitor> GetCompetitors()
+        public List<Competitor> GetCompetitors(Guid raceId)
         {
-            var kon = new Competitor();
-            return kon.Hämta();
+            var competitor = new Competitor();
+            return competitor.Get(raceId);
         }
     }
 }

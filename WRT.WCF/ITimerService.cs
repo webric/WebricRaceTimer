@@ -19,15 +19,18 @@ namespace WRT.WCF
         Competitor SaveCompetitor(string number, string name);
 
         [OperationContract]
-        string StartCompetitor(Guid id, DateTime start);
+        bool StartCompetitor(Guid raceId, Guid competitorId, DateTime time);
 
         [OperationContract]
-        string FinnishCompetitor(Guid id, DateTime start);
-
-        [OperationContract]
-        string StartAll(Guid raceId);
+        bool StartAll(Guid raceId);
 
         [OperationContract]
         bool FinnishCompetitor(Guid raceId, Guid competitorId, DateTime time);
+
+        [OperationContract]
+        bool FinnishRace(Guid raceId, DateTime time);
+
+        [OperationContract]
+        List<Competitor> GetCompetitors(Guid raceId);
     }
 }

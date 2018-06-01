@@ -35,5 +35,10 @@ namespace WRT.Core.BLL
             else
                 return false;
         }
+
+        public List<Competitor> Get(Guid raceId)
+        {
+            return DAL.Competitor.Get(raceId);
+        }
     }
 }

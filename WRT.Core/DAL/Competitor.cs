@@ -8,105 +8,112 @@ namespace WRT.Core.DAL
 {
     public class Competitor : DALBase
     {
-        public static List<BLL.Competitor> Hämta(int? kontainerId)
-        {
-            DataTable dt;
-
-            var builder = new StringBuilder();
-            builder.Append(" SELECT [ContainerId]");
-            builder.Append(" ,[Name] ");
-            builder.Append(" ,[Created] ");
-            builder.Append(" ,[Serial] ");
-            builder.Append(" FROM [Container] ");
-            if (kontainerId != null)
-            {
-                builder.Append(" WHERE ContainerId = @ContainerId ");
-                builder.Append(" ORDER BY [Name] ASC ");
-
-                var parameters = new SqlParameter[1];
-                parameters[0] = new SqlParameter("@ContainerId", SqlDbType.Int) { Value = kontainerId };
-
-                dt = ExecuteQuery(builder.ToString(), ref parameters);
-            }
-            else
-            {
-                builder.Append(" ORDER BY [Name] ASC ");
-
-                dt = ExecuteQuery(builder.ToString());
-            }
-
-            var kontainrar = new List<BLL.Kontainer>();
-
-            foreach (DataRow row in dt.Rows)
-                kontainrar.Add(PopulateObject(row));
-
-            return kontainrar;
-        }
         public static bool Save(BLL.Competitor competitor)
         {
-            throw new NotImplementedException();
-
             var builder = new StringBuilder();
-            builder.Append(" INSERT INTO [Container] (");
-            builder.Append(" [Name] ");
-            builder.Append(" ,[Created] ");
-            builder.Append(" ,[Serial] ");
+            builder.Append(" INSERT INTO [Competitor] (");
+            builder.Append(" [Id] ");
+            builder.Append(" ,[RaceId] ");
+            builder.Append(" ,[Number] ");
+            builder.Append(" ,[Name] ");
+            builder.Append(" ,[StartTime] ");
+            builder.Append(" ,[StopTime] ");
             builder.Append(" ) VALUES ( ");
-            builder.Append(" @Name ");
-            builder.Append(", @Created ");
-            builder.Append(", @Serial ");
+            builder.Append(" @Id ");
+            builder.Append(", @RaceId ");
+            builder.Append(", @Number ");
+            builder.Append(", @Name ");
+            builder.Append(", @StartTime ");
+            builder.Append(", @StopTime ");
             builder.Append(" ) ");
 
-            var parameters = new SqlParameter[2];
-            parameters[0] = new SqlParameter("@Name", SqlDbType.VarChar, 50) { Value = namn };
-            parameters[1] = new SqlParameter("@Created", SqlDbType.DateTime) { Value = tillverkad };
-            parameters[2] = new SqlParameter("@Serial", SqlDbType.VarChar, 50) { Value = serienummer };
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@Id", SqlDbType.UniqueIdentifier) { Value = competitor.Id };
+            parameters[1] = new SqlParameter("@RaceId", SqlDbType.UniqueIdentifier) { Value = competitor.RaceId };
+            parameters[2] = new SqlParameter("@Number", SqlDbType.VarChar, 50) { Value = competitor.Number };
+            parameters[3] = new SqlParameter("@Name", SqlDbType.VarChar, 50) { Value = competitor.Name };
+            parameters[4] = new SqlParameter("@StartTime", SqlDbType.DateTime) { Value = competitor.StartTime };
+            parameters[5] = new SqlParameter("@StopTime", SqlDbType.DateTime) { Value = competitor.StopTime };
 
             ExecuteQuery(builder.ToString(), ref parameters);
+
+            return true;
         }
 
         public static bool Start(Guid raceId, Guid competitorId, DateTime time)
         {
-            throw new NotImplementedException();
-            var pos = new BLL.Competitor
-            {
-                    KontainerId = (int)dr.ItemArray[0],
-                    Namn = dr.ItemArray[1].ToString(),
-                    Tillverkad = DateTime.Parse(dr.ItemArray[2].ToString()),
-                    Serienummer = dr.ItemArray[3].ToString(),
-                };
+            var builder = new StringBuilder();
+            builder.Append(" UPDATE [Competitor] SET ");
+            builder.Append(" [StartTime] = @StartTime ");
+            builder.Append(" WHERE ");
+            builder.Append(" [Id] = @Id ");
 
-            return pos;
+            var parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@Id", SqlDbType.UniqueIdentifier) { Value = competitorId };
+            parameters[1] = new SqlParameter("@StartTime", SqlDbType.DateTime) { Value = time };
+   
+            ExecuteQuery(builder.ToString(), ref parameters);
+
+            return true;
         }
 
         public static bool Stop(Guid raceId, Guid competitorId, DateTime time)
         {
-            throw new NotImplementedException();
-            var pos = new BLL.Competitor
-            {
-                KontainerId = (int)dr.ItemArray[0],
-                Namn = dr.ItemArray[1].ToString(),
-                Tillverkad = DateTime.Parse(dr.ItemArray[2].ToString()),
-                Serienummer = dr.ItemArray[3].ToString(),
-            };
+            var builder = new StringBuilder();
+            builder.Append(" UPDATE [Competitor] SET ");
+            builder.Append(" [StopTime] = @StopTime ");
+            builder.Append(" WHERE ");
+            builder.Append(" [Id] = @Id ");
 
-            return pos;
+            var parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@Id", SqlDbType.UniqueIdentifier) { Value = competitorId };
+            parameters[1] = new SqlParameter("@StopTime", SqlDbType.DateTime) { Value = time };
+
+            ExecuteQuery(builder.ToString(), ref parameters);
+
+            return true;
         }
 
-        private static BLL.Position PopulateObject(DataRow dr)
+        public static List<BLL.Competitor> Get(Guid raceId)
         {
-            var pos = new BLL.Position
+            var builder = new StringBuilder();
+            builder.Append(" SELECT ");
+            builder.Append(" [Id] ");
+            builder.Append(" ,[RaceId] ");
+            builder.Append(" ,[Number] ");
+            builder.Append(" ,[Name] ");
+            builder.Append(" ,[StartTime] ");
+            builder.Append(" ,[StopTime] ");
+            builder.Append(" FROM [Competitor] ");
+            builder.Append(" [Id] = @Id ");
+
+            var parameters = new SqlParameter[0];
+            parameters[0] = new SqlParameter("@RaceId", SqlDbType.UniqueIdentifier) { Value = raceId };
+            
+            var result = ExecuteQuery(builder.ToString(), ref parameters);
+
+            var competitors = new List<BLL.Competitor>();
+
+            foreach (DataRow dr in result.Rows)
             {
-                PositionId = (int)dr.ItemArray[0],
-                KontainerId = (int)dr.ItemArray[1],
-                Tidpunkt = DateTime.Parse(dr.ItemArray[2].ToString()),
-                Longitude = dr.ItemArray[3].ToString(),
-                Latitude = dr.ItemArray[4].ToString(),
-                Noggranhet = dr.ItemArray[5].ToString(),
-                Status = dr.ItemArray[6].ToString()
+                competitors.Add(PopulateObject(dr));
+            }
+
+            return competitors;
+        }
+        private static BLL.Competitor PopulateObject(DataRow dr)
+        {
+            var com = new BLL.Competitor
+            {
+                Id = (Guid)dr.ItemArray[0],
+                RaceId = (Guid)dr.ItemArray[1],
+                Number= dr.ItemArray[2].ToString(),
+                Name= dr.ItemArray[3].ToString(),
+                StartTime= DateTime.Parse(dr.ItemArray[4].ToString()),
+                StopTime = DateTime.Parse(dr.ItemArray[5].ToString())
             };
 
-            return pos;
+            return com;
         }
     }
 }
