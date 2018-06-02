@@ -26,10 +26,10 @@ namespace WRT.WCF
             var competitor = new Competitor();
             return competitor.Start(raceId, competitorId, time);
         }
-        public bool StartAll(Guid raceId)
+        public bool StartAll(Guid raceId, DateTime time)
         {
             var race = new Race();
-            return race.StartAll(raceId);
+            return race.StartAll(raceId, time);
         }
         public bool FinnishCompetitor(Guid raceId, Guid competitorId, DateTime time)
         {

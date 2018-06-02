@@ -42,18 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\Competitor.cs" />
-    <Compile Include="BLL\Kontainer.cs" />
     <Compile Include="BLL\CompetitorDO.cs" />
-    <Compile Include="BLL\KontainerDO.cs" />
     <Compile Include="BLL\Race.cs" />
-    <Compile Include="BLL\Position.cs" />
     <Compile Include="BLL\RaceDO.cs" />
-    <Compile Include="BLL\PositionDO.cs" />
     <Compile Include="DAL\DALBase.cs" />
     <Compile Include="DAL\Competitor.cs" />
-    <Compile Include="DAL\Kontainer.cs" />
     <Compile Include="DAL\Race.cs" />
-    <Compile Include="DAL\Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Base.cs" />
     <Compile Include="Util\CacheHelper.cs" />

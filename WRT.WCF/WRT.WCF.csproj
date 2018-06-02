@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="TimerService.svc" />
-    <Content Include="TrackerService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -70,10 +69,6 @@
     <Compile Include="TimerService.svc.cs">
       <DependentUpon>TimerService.svc</DependentUpon>
     </Compile>
-    <Compile Include="TrackerService.svc.cs">
-      <DependentUpon>TrackerService.svc</DependentUpon>
-    </Compile>
-    <Compile Include="ITrackerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

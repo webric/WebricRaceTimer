@@ -27,7 +27,7 @@ namespace WRT.Core.DAL
             builder.Append(", @StopTime ");
             builder.Append(" ) ");
 
-            var parameters = new SqlParameter[4];
+            var parameters = new SqlParameter[5];
             parameters[0] = new SqlParameter("@Id", SqlDbType.UniqueIdentifier) { Value = competitor.Id };
             parameters[1] = new SqlParameter("@RaceId", SqlDbType.UniqueIdentifier) { Value = competitor.RaceId };
             parameters[2] = new SqlParameter("@Number", SqlDbType.VarChar, 50) { Value = competitor.Number };

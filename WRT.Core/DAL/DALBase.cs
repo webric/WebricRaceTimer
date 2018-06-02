@@ -10,7 +10,7 @@ namespace WRT.Core.DAL
         {
             var result = new DataTable();
 
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["IPSDB"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["RTDB"].ConnectionString))
             {
                 var adapter = new SqlDataAdapter(query, connection);
                 adapter.Fill(result);
@@ -23,7 +23,7 @@ namespace WRT.Core.DAL
         {
             var result = new DataTable();
 
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["IPSDB"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["RTDB"].ConnectionString))
             {
                 var command = new SqlCommand(query, connection);
                 command.Parameters.AddRange(parameters);
@@ -38,7 +38,7 @@ namespace WRT.Core.DAL
         {
             var result = new DataTable();
 
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["IPSDB"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["RTDB"].ConnectionString))
             {
                 var command = new SqlCommand(spName, connection) {CommandType = CommandType.StoredProcedure};
                 command.Parameters.AddRange(parameters);

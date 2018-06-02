@@ -24,9 +24,9 @@ namespace WRT.Core.BLL
             else
                 return null;
         }
-        public bool StartAll(Guid raceId)
+        public bool StartAll(Guid raceId, DateTime time)
         {
-            if (DAL.Race.StartAll(raceId))
+            if (DAL.Race.StartAll(raceId, time))
                 return true;
             else
                 return false;

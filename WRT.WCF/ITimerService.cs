@@ -22,7 +22,7 @@ namespace WRT.WCF
         bool StartCompetitor(Guid raceId, Guid competitorId, DateTime time);
 
         [OperationContract]
-        bool StartAll(Guid raceId);
+        bool StartAll(Guid raceId, DateTime time);
 
         [OperationContract]
         bool FinnishCompetitor(Guid raceId, Guid competitorId, DateTime time);
