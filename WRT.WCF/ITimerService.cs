@@ -16,7 +16,7 @@ namespace WRT.WCF
         Race Init(string name);
 
         [OperationContract]
-        Competitor SaveCompetitor(string number, string name);
+        Competitor CreateCompetitor(string number, string name);
 
         [OperationContract]
         bool StartCompetitor(Guid raceId, Guid competitorId, DateTime time);

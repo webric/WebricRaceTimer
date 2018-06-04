@@ -6,7 +6,7 @@ namespace WRT.Core.BLL
 {
     partial class Race
     {
-        public Race Init(string name)
+        public static Race Init(string name)
         {
             var race = new Race
             {
@@ -24,19 +24,26 @@ namespace WRT.Core.BLL
             else
                 return null;
         }
-        public bool StartAll(Guid raceId, DateTime time)
+
+        public static bool StartAll(Guid raceId, DateTime time)
         {
             if (DAL.Race.StartAll(raceId, time))
                 return true;
             else
                 return false;
         }
-        public bool Finnish(Guid raceId, DateTime time)
+
+        public static bool Finnish(Guid raceId, DateTime time)
         {
             if (DAL.Race.Finnish(raceId, time))
                 return true;
             else
                 return false;
+        }
+
+        public static Race GetRace(Guid raceId)
+        {
+            return DAL.Race.GetRace(raceId);
         }
     }
 }

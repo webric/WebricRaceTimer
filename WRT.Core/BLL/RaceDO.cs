@@ -11,5 +11,6 @@ namespace WRT.Core.BLL
         public DateTime StartTime { get; set; }
         public DateTime StopTime { get; set; }
         public bool Finnished { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }

@@ -10,5 +10,6 @@ namespace WRT.Core.BLL
         public string Name { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime StopTime { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }

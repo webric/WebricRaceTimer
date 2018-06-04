@@ -13,38 +13,42 @@ namespace WRT.WCF
     {
         public Race Init(string name)
         {
-            var race = new Race();
-            return race.Init(name);
+            return Race.Init(name);
         }
-        public Competitor SaveCompetitor(string number, string name)
+
+        public Competitor CreateCompetitor(string number, string name)
         {
-            var competitor = new Competitor();
-            return competitor.Save(number, name);
+            return Competitor.Create(number, name);
         }
+
         public bool StartCompetitor(Guid raceId, Guid competitorId, DateTime time)
         {
-            var competitor = new Competitor();
-            return competitor.Start(raceId, competitorId, time);
+            return Competitor.Start(raceId, competitorId, time);
         }
+
         public bool StartAll(Guid raceId, DateTime time)
         {
-            var race = new Race();
-            return race.StartAll(raceId, time);
+            return Race.StartAll(raceId, time);
         }
+
         public bool FinnishCompetitor(Guid raceId, Guid competitorId, DateTime time)
         {
-            var competitor = new Competitor();
-            return competitor.Finnish(raceId, competitorId, time);
+            return Competitor.Finnish(raceId, competitorId, time);
         }
+
         public bool FinnishRace(Guid raceId, DateTime time)
         {
-            var race = new Race();
-            return race.Finnish(raceId, time);
+            return Race.Finnish(raceId, time);
         }
+
         public List<Competitor> GetCompetitors(Guid raceId)
         {
-            var competitor = new Competitor();
-            return competitor.Get(raceId);
+            return Competitor.GetCompetitors(raceId);
+        }
+
+        public Competitor GetCompetitor(Guid competitorId)
+        {
+            return Competitor.GetCompetitor(competitorId);
         }
     }
 }

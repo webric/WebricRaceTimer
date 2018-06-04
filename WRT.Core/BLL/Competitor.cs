@@ -5,7 +5,7 @@ namespace WRT.Core.BLL
 {
     partial class Competitor
     {
-        public Competitor Save(string number, string name)
+        public static Competitor Create(string number, string name)
         {
             var competitor = new Competitor
             {
@@ -14,13 +14,13 @@ namespace WRT.Core.BLL
                 Name = name
             };
 
-            if (DAL.Competitor.Save(competitor))
+            if (DAL.Competitor.Create(competitor))
                 return competitor;
             else
                 return null;
         }
 
-        public bool Start(Guid raceId, Guid competitorId, DateTime time)
+        public static bool Start(Guid raceId, Guid competitorId, DateTime time)
         {
             if (DAL.Competitor.Start(raceId, competitorId, time))
                 return true;
@@ -28,7 +28,7 @@ namespace WRT.Core.BLL
                 return false;
         }
 
-        public bool Finnish(Guid raceId, Guid competitorId, DateTime time)
+        public static bool Finnish(Guid raceId, Guid competitorId, DateTime time)
         {
             if (DAL.Competitor.Stop(raceId, competitorId, time))
                 return true;
@@ -36,9 +36,14 @@ namespace WRT.Core.BLL
                 return false;
         }
 
-        public List<Competitor> Get(Guid raceId)
+        public static Competitor GetCompetitor(Guid competitorId)
         {
-            return DAL.Competitor.Get(raceId);
+            return DAL.Competitor.GetCompetitor(competitorId);
+        }
+
+        public static List<Competitor> GetCompetitors(Guid raceId)
+        {
+            return DAL.Competitor.GetCompetitors(raceId);
         }
     }
 }
