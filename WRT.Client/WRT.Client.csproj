@@ -165,6 +165,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="NewCompetitor.aspx" />
+    <Content Include="NewRace.aspx" />
+    <Content Include="Race.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -181,6 +184,8 @@
     <Content Include="packages.config" />
     <Content Include="Properties\DataSources\IPS.Core.BLL.Kontainer.datasource" />
     <Content Include="Properties\DataSources\WRT.Core.BLL.Kontainer.datasource" />
+    <Content Include="Properties\DataSources\WRT.Core.BLL.Competitor.datasource" />
+    <Content Include="Properties\DataSources\WRT.Core.BLL.Race.datasource" />
     <None Include="Properties\PublishProfiles\IPSClient.pubxml" />
     <None Include="Properties\PublishProfiles\profile1.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
@@ -193,10 +198,20 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <None Include="Service References\TrackerService\TrackerService.disco" />
-    <None Include="Service References\TrackerService\configuration91.svcinfo" />
-    <None Include="Service References\TrackerService\configuration.svcinfo" />
-    <None Include="Service References\TrackerService\Reference.svcmap">
+    <None Include="Service References\TimerService\TimerService.wsdl" />
+    <None Include="Service References\TimerService\TimerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TimerService\TimerService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TimerService\TimerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TimerService\TimerService.disco" />
+    <None Include="Service References\TimerService\configuration91.svcinfo" />
+    <None Include="Service References\TimerService\configuration.svcinfo" />
+    <None Include="Service References\TimerService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -230,6 +245,27 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NewCompetitor.aspx.cs">
+      <DependentUpon>NewCompetitor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewCompetitor.aspx.designer.cs">
+      <DependentUpon>NewCompetitor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewRace.aspx.cs">
+      <DependentUpon>NewRace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewRace.aspx.designer.cs">
+      <DependentUpon>NewRace.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Race.aspx.cs">
+      <DependentUpon>Race.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Race.aspx.designer.cs">
+      <DependentUpon>Race.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -241,7 +277,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\TrackerService\Reference.cs">
+    <Compile Include="Service References\TimerService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -276,16 +312,6 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\TrackerService\TrackerService.wsdl" />
-    <None Include="Service References\TrackerService\TrackerService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TrackerService\TrackerService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TrackerService\TrackerService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -303,7 +329,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\TrackerService\" />
+    <WCFMetadataStorage Include="Service References\TimerService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

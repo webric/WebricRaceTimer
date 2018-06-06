@@ -10,19 +10,20 @@ namespace WRT.Core.DAL
     {
         public static bool Create(BLL.Competitor competitor)
         {
+            competitor.Id = Guid.NewGuid();
             competitor.TimeStamp = DateTime.Now;
             Insert(competitor);
 
             return true;
         }
 
-        public static bool Start(Guid raceId, Guid competitorId, DateTime time)
+        public static bool Start(string raceId, string competitorId, DateTime time)
         {
             var com = new BLL.Competitor
             {
-                Id = competitorId,
-                RaceId = raceId,
-                StartTime = time,
+                Id = Guid.NewGuid(),
+                CompetitorSid = competitorId,
+                RaceSid = raceId,
                 TimeStamp = DateTime.Now
             };
 
@@ -31,13 +32,12 @@ namespace WRT.Core.DAL
             return true;
         }
 
-        public static bool Stop(Guid raceId, Guid competitorId, DateTime time)
+        public static bool Stop(string raceSId, string competitorSid, DateTime time)
         {
             var com = new BLL.Competitor
             {
-                Id = competitorId,
-                RaceId = raceId,
-                StopTime = time,
+                CompetitorSid = competitorSid,
+                RaceSid = raceSId,
                 TimeStamp = DateTime.Now
             };
 
@@ -51,37 +51,34 @@ namespace WRT.Core.DAL
             var builder = new StringBuilder();
             builder.Append(" INSERT INTO [CompetitorLog] (");
             builder.Append(" [Id] ");
-            builder.Append(" ,[RaceId] ");
+            builder.Append(" ,[CompetitorSid] ");
+            builder.Append(" ,[RaceSid] ");
             builder.Append(" ,[Number] ");
             builder.Append(" ,[Name] ");
-            builder.Append(" ,[StartTime] ");
-            builder.Append(" ,[StopTime] ");
             builder.Append(" ,[TimeStamp] ");
             builder.Append(" ) VALUES ( ");
             builder.Append(" @Id ");
-            builder.Append(", @RaceId ");
+            builder.Append(", @CompetitorSid ");
+            builder.Append(", @RaceSid ");
             builder.Append(", @Number ");
             builder.Append(", @Name ");
-            builder.Append(", @StartTime ");
-            builder.Append(", @StopTime ");
             builder.Append(", @TimeStamp ");
             builder.Append(" ) ");
 
-            var parameters = new SqlParameter[6];
+            var parameters = new SqlParameter[5];
             parameters[0] = new SqlParameter("@Id", SqlDbType.UniqueIdentifier) { Value = competitor.Id };
-            parameters[1] = new SqlParameter("@RaceId", SqlDbType.UniqueIdentifier) { Value = competitor.RaceId };
-            parameters[2] = new SqlParameter("@Number", SqlDbType.VarChar, 50) { Value = competitor.Number };
-            parameters[3] = new SqlParameter("@Name", SqlDbType.VarChar, 50) { Value = competitor.Name };
-            parameters[4] = new SqlParameter("@StartTime", SqlDbType.DateTime) { Value = competitor.StartTime };
-            parameters[5] = new SqlParameter("@StopTime", SqlDbType.DateTime) { Value = competitor.StopTime };
-            parameters[6] = new SqlParameter("@SeqId", SqlDbType.DateTime) { Value = competitor.TimeStamp };
+            parameters[1] = new SqlParameter("@CompetitorSid", SqlDbType.VarChar, 6) { Value = competitor.CompetitorSid };
+            parameters[2] = new SqlParameter("@RaceSid", SqlDbType.VarChar, 6) { Value = competitor.RaceSid };
+            parameters[3] = new SqlParameter("@Number", SqlDbType.VarChar, 6) { Value = competitor.Number };
+            parameters[4] = new SqlParameter("@Name", SqlDbType.VarChar, 100) { Value = competitor.Name };
+            parameters[5] = new SqlParameter("@TimeStamp", SqlDbType.DateTime) { Value = competitor.TimeStamp };
 
             ExecuteQuery(builder.ToString(), ref parameters);
 
             return true;
         }
 
-        public static List<BLL.Competitor> GetCompetitors(Guid raceId)
+        public static List<BLL.Competitor> GetCompetitors(string raceSid)
         {
             var builder = new StringBuilder();
             builder.Append(" SELECT ");
@@ -95,7 +92,7 @@ namespace WRT.Core.DAL
             builder.Append(" [Id] = @Id ");
 
             var parameters = new SqlParameter[0];
-            parameters[0] = new SqlParameter("@RaceId", SqlDbType.UniqueIdentifier) { Value = raceId };
+            parameters[0] = new SqlParameter("@RaceId", SqlDbType.VarChar,6) { Value = raceSid };
 
             var result = ExecuteQuery(builder.ToString(), ref parameters);
 
@@ -109,7 +106,7 @@ namespace WRT.Core.DAL
             return competitors;
         }
 
-        public static BLL.Competitor GetCompetitor(Guid competitorId)
+        public static BLL.Competitor GetCompetitor(string competitorSid)
         {
             var builder = new StringBuilder();
             builder.Append(" SELECT ");
@@ -123,7 +120,7 @@ namespace WRT.Core.DAL
             builder.Append(" [Id] = @Id ");
 
             var parameters = new SqlParameter[0];
-            parameters[0] = new SqlParameter("@Id", SqlDbType.UniqueIdentifier) { Value = competitorId };
+            parameters[0] = new SqlParameter("@Id", SqlDbType.VarChar) { Value = competitorSid };
 
             var result = ExecuteQuery(builder.ToString(), ref parameters);
 
@@ -139,11 +136,11 @@ namespace WRT.Core.DAL
             var com = new BLL.Competitor
             {
                 Id = (Guid)dr.ItemArray[0],
-                RaceId = (Guid)dr.ItemArray[1],
+                RaceSid = dr.ItemArray[1].ToString(),
+                CompetitorSid = dr.ItemArray[2].ToString(),
                 Number = dr.ItemArray[2].ToString(),
                 Name = dr.ItemArray[3].ToString(),
-                StartTime = DateTime.Parse(dr.ItemArray[4].ToString()),
-                StopTime = DateTime.Parse(dr.ItemArray[5].ToString())
+                TimeStamp = DateTime.Parse(dr.ItemArray[4].ToString()),
             };
 
             return com;

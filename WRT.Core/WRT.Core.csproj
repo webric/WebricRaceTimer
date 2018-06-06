@@ -43,10 +43,13 @@
   <ItemGroup>
     <Compile Include="BLL\Competitor.cs" />
     <Compile Include="BLL\CompetitorDO.cs" />
+    <Compile Include="BLL\Time.cs" />
     <Compile Include="BLL\Race.cs" />
+    <Compile Include="BLL\TimeDO.cs" />
     <Compile Include="BLL\RaceDO.cs" />
     <Compile Include="DAL\DALBase.cs" />
     <Compile Include="DAL\Competitor.cs" />
+    <Compile Include="DAL\Time.cs" />
     <Compile Include="DAL\Race.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Base.cs" />

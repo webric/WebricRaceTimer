@@ -10,33 +10,24 @@
 namespace WRT.Client {
     
     
-    public partial class _Default {
+    public partial class _NewRace {
         
         /// <summary>
-        /// txtExistingRaceSid control.
+        /// txtRaceName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExistingRaceSid;
+        protected global::System.Web.UI.WebControls.TextBox txtRaceName;
         
         /// <summary>
-        /// btnExistingRaceSid control.
+        /// btnSaveNewRace control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExistingRaceSid;
-        
-        /// <summary>
-        /// btnNewRace control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNewRace;
+        protected global::System.Web.UI.WebControls.Button btnSaveNewRace;
     }
 }

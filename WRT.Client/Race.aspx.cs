@@ -10,23 +10,22 @@ using WRT.Core.Util;
 
 namespace WRT.Client
 {
-    public partial class _Default : Page
+    public partial class _Race : Page
     {
+        private string RaceSid;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            RaceSid = Request.QueryString["race"];
+
             if (!Page.IsPostBack)
             {
             }
         }
 
-        protected void BtnExistingRaceSid_OnClick(object sender, EventArgs e)
+        protected void BtnAddCompetitor_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("/race.aspx?race=" + txtExistingRaceSid.Text);
-        }
-
-        protected void BtnNewRace_OnClick(object sender, EventArgs e)
-        {
-            Response.Redirect("/newrace.aspx");
+            Response.Redirect("/NewCompetitor.aspx");
         }
     }
 }

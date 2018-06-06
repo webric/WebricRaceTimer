@@ -12,8 +12,8 @@ namespace WRT.Core.BLL
             {
                 Id = Guid.NewGuid(),
                 Name = name,
-                LookId = "123456",
-                AdminId = "78",
+                AdminId = GenerateAdminId(),
+                RaceSid = GenerateRaceSid(),
                 StartTime = DateTime.MinValue,
                 StopTime = DateTime.MinValue,
                 Finnished = false
@@ -25,25 +25,38 @@ namespace WRT.Core.BLL
                 return null;
         }
 
-        public static bool StartAll(Guid raceId, DateTime time)
+        public static bool StartAll(string raceSid, DateTime time)
         {
-            if (DAL.Race.StartAll(raceId, time))
+            if (DAL.Race.StartAll(raceSid, time))
                 return true;
             else
                 return false;
         }
 
-        public static bool Finnish(Guid raceId, DateTime time)
+        public static bool Finnish(string raceSid, DateTime time)
         {
-            if (DAL.Race.Finnish(raceId, time))
+            if (DAL.Race.Finnish(raceSid, time))
                 return true;
             else
                 return false;
         }
 
-        public static Race GetRace(Guid raceId)
+        public static Race GetRace(string raceSid)
         {
-            return DAL.Race.GetRace(raceId);
+            return DAL.Race.GetRace(raceSid);
+        }
+        private static string GenerateAdminId()
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(10, 99);
+            return randomNumber.ToString();
+        }
+
+        private static string GenerateRaceSid()
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(1000, 9999);
+            return randomNumber.ToString();
         }
     }
 }

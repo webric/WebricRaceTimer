@@ -147,7 +147,7 @@ namespace WRT.Core.Util
             //param[11] = new SqlParameter("@Uniq", SqlDbType.UniqueIdentifier);
             //param[11].Value = uniq;
 
-            //IPS.Core.DAL.DALBase.ExecuteQuery(query, ref param, "Data Source=MSDB2.web.surftown.se;Initial Catalog=Madrid_WCore;User Id=Madrid_MeaInL;Password=onug8523");
+            //WRT.Core.DAL.DALBase.ExecuteQuery(query, ref param, "Data Source=MSDB2.web.surftown.se;Initial Catalog=Madrid_WCore;User Id=Madrid_MeaInL;Password=onug8523");
         }
         private static string GetErrorMessage(Exception exception)
         {

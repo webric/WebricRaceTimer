@@ -11,9 +11,10 @@ namespace WRT.WCF
 {
     public class TimerService : ITimerService
     {
-        public Race Init(string name)
+        public string InitRace(string name)
         {
-            return Race.Init(name);
+            var race = Race.Init(name);
+            return race.RaceSid;
         }
 
         public Competitor CreateCompetitor(string number, string name)
@@ -21,34 +22,34 @@ namespace WRT.WCF
             return Competitor.Create(number, name);
         }
 
-        public bool StartCompetitor(Guid raceId, Guid competitorId, DateTime time)
+        public bool StartCompetitor(string raceSid, string competitorSid, DateTime time)
         {
-            return Competitor.Start(raceId, competitorId, time);
+            return Competitor.Start(raceSid, competitorSid, time);
         }
 
-        public bool StartAll(Guid raceId, DateTime time)
+        public bool StartAll(string raceSid, DateTime time)
         {
-            return Race.StartAll(raceId, time);
+            return Race.StartAll(raceSid, time);
         }
 
-        public bool FinnishCompetitor(Guid raceId, Guid competitorId, DateTime time)
+        public bool FinnishCompetitor(string raceSid, string competitorSid, DateTime time)
         {
-            return Competitor.Finnish(raceId, competitorId, time);
+            return Competitor.Finnish(raceSid, competitorSid, time);
         }
 
-        public bool FinnishRace(Guid raceId, DateTime time)
+        public bool FinnishRace(string raceSid, DateTime time)
         {
-            return Race.Finnish(raceId, time);
+            return Race.Finnish(raceSid, time);
         }
 
-        public List<Competitor> GetCompetitors(Guid raceId)
+        public List<Competitor> GetCompetitors(String raceSid)
         {
-            return Competitor.GetCompetitors(raceId);
+            return Competitor.GetCompetitors(raceSid);
         }
 
-        public Competitor GetCompetitor(Guid competitorId)
+        public Competitor GetCompetitor(string competitorSid)
         {
-            return Competitor.GetCompetitor(competitorId);
+            return Competitor.GetCompetitor(competitorSid);
         }
     }
 }

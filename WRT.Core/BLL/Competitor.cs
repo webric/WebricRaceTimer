@@ -9,8 +9,7 @@ namespace WRT.Core.BLL
         {
             var competitor = new Competitor
             {
-                Id = Guid.NewGuid(),
-                Number = number,
+                               Number = number,
                 Name = name
             };
 
@@ -20,30 +19,30 @@ namespace WRT.Core.BLL
                 return null;
         }
 
-        public static bool Start(Guid raceId, Guid competitorId, DateTime time)
+        public static bool Start(string raceSid, string competitorSid, DateTime time)
         {
-            if (DAL.Competitor.Start(raceId, competitorId, time))
+            if (DAL.Competitor.Start(raceSid, competitorSid, time))
                 return true;
             else
                 return false;
         }
 
-        public static bool Finnish(Guid raceId, Guid competitorId, DateTime time)
+        public static bool Finnish(string raceSid, string competitorSid, DateTime time)
         {
-            if (DAL.Competitor.Stop(raceId, competitorId, time))
+            if (DAL.Competitor.Stop(raceSid, competitorSid, time))
                 return true;
             else
                 return false;
         }
 
-        public static Competitor GetCompetitor(Guid competitorId)
+        public static Competitor GetCompetitor(string competitorSid)
         {
-            return DAL.Competitor.GetCompetitor(competitorId);
+            return DAL.Competitor.GetCompetitor(competitorSid);
         }
 
-        public static List<Competitor> GetCompetitors(Guid raceId)
+        public static List<Competitor> GetCompetitors(string raceSid)
         {
-            return DAL.Competitor.GetCompetitors(raceId);
+            return DAL.Competitor.GetCompetitors(raceSid);
         }
     }
 }

@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="IPS.Client.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="WRT.Client.Global" Language="C#" %>

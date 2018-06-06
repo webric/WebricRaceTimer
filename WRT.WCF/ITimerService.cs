@@ -13,24 +13,24 @@ namespace WRT.WCF
     public interface ITimerService
     {
         [OperationContract]
-        Race Init(string name);
+        string InitRace(string name);
 
         [OperationContract]
         Competitor CreateCompetitor(string number, string name);
 
         [OperationContract]
-        bool StartCompetitor(Guid raceId, Guid competitorId, DateTime time);
+        bool StartCompetitor(string raceSid, string competitorSid, DateTime time);
 
         [OperationContract]
-        bool StartAll(Guid raceId, DateTime time);
+        bool StartAll(string raceSid, DateTime time);
 
         [OperationContract]
-        bool FinnishCompetitor(Guid raceId, Guid competitorId, DateTime time);
+        bool FinnishCompetitor(string raceSid, string competitorSid, DateTime time);
 
         [OperationContract]
-        bool FinnishRace(Guid raceId, DateTime time);
+        bool FinnishRace(string raceSid, DateTime time);
 
         [OperationContract]
-        List<Competitor> GetCompetitors(Guid raceId);
+        List<Competitor> GetCompetitors(string raceSid);
     }
 }
