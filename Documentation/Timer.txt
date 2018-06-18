@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+//Public variables
+var today;
+var i = 0;
+
+function initTime() {
+    var startTime = new Date('');
+	var timeNow = new Date();
+	today = new Date();
+	today.setDate(timeNow.getDate()-startTime.getDate());
+    today.setHours(timeNow.getHours()-startTime.getHours());
+    today.setMinutes(timeNow.getMinutes()-startTime.getMinutes());
+    today.setSeconds(timeNow.getSeconds()-startTime.getSeconds());
+    today.setMilliseconds(timeNow.getMilliseconds()-startTime.getMilliseconds());
+	i=1;
+}
+
+function startTime() {
+    while(i==0){
+		initTime()};
+	
+	today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    var ms = today.getMilliseconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s + ":" + ms;
+    var t = setTimeout(startTime, 100);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+</head>
+
+<body onload="startTime()">
+
+<div id="txt"></div>
+
+</body>
+</html>
