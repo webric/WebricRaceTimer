@@ -114,7 +114,8 @@ h5, h6 {
     }
 
 header .content-wrapper {
-    padding-top: 20px; 
+    margin: 0 auto;
+    padding-top: 20px;
 }
     
 footer {

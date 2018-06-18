@@ -51,5 +51,15 @@ namespace WRT.WCF
         {
             return Competitor.GetCompetitor(competitorSid);
         }
+
+        public Race GetRace(string raceSid)
+        {
+            return Race.GetRace(raceSid);
+        }
+
+        public bool StartRace(string raceSid)
+        {
+            return Race.StartRace(raceSid);
+        }
     }
 }

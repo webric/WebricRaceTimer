@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WRT.Client
-{
-
-
-    public partial class SiteMaster
-    {
-
+namespace WRT.Client {
+    
+    
+    public partial class SiteMaster {
+        
         /// <summary>
         /// HeadContent control.
         /// </summary>
@@ -22,7 +20,25 @@ namespace WRT.Client
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
-
+        
+        /// <summary>
+        /// pageBody control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pageBody;
+        
+        /// <summary>
+        /// headerText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl headerText;
+        
         /// <summary>
         /// FeaturedContent control.
         /// </summary>
@@ -31,7 +47,7 @@ namespace WRT.Client
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder FeaturedContent;
-
+        
         /// <summary>
         /// MainContent control.
         /// </summary>

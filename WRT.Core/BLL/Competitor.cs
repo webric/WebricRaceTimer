@@ -9,7 +9,7 @@ namespace WRT.Core.BLL
         {
             var competitor = new Competitor
             {
-                               Number = number,
+                Number = number,
                 Name = name
             };
 
@@ -44,5 +44,6 @@ namespace WRT.Core.BLL
         {
             return DAL.Competitor.GetCompetitors(raceSid);
         }
+
     }
 }

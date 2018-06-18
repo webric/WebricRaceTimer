@@ -92,7 +92,7 @@ namespace WRT.Core.DAL
             builder.Append(" [Id] = @Id ");
 
             var parameters = new SqlParameter[0];
-            parameters[0] = new SqlParameter("@RaceId", SqlDbType.VarChar,6) { Value = raceSid };
+            parameters[0] = new SqlParameter("@RaceId", SqlDbType.VarChar, 6) { Value = raceSid };
 
             var result = ExecuteQuery(builder.ToString(), ref parameters);
 

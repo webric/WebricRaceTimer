@@ -14,8 +14,8 @@ namespace WRT.Core.BLL
                 Name = name,
                 AdminId = GenerateAdminId(),
                 RaceSid = GenerateRaceSid(),
-                StartTime = DateTime.MinValue,
-                StopTime = DateTime.MinValue,
+                StartTime = null,
+                StopTime = null,
                 Finnished = false
             };
 
@@ -44,6 +44,11 @@ namespace WRT.Core.BLL
         public static Race GetRace(string raceSid)
         {
             return DAL.Race.GetRace(raceSid);
+        }
+
+        public static bool StartRace(string raceSid)
+        {
+            return DAL.Race.StartRace(raceSid);
         }
         private static string GenerateAdminId()
         {

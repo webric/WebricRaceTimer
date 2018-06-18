@@ -35,6 +35,12 @@ namespace WRT.Client.TimerService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/GetCompetitors", ReplyAction="http://tempuri.org/ITimerService/GetCompetitorsResponse")]
         WRT.Core.BLL.Competitor[] GetCompetitors(string raceSid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/GetRace", ReplyAction="http://tempuri.org/ITimerService/GetRaceResponse")]
+        WRT.Core.BLL.Race GetRace(string raceSid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/StartRace", ReplyAction="http://tempuri.org/ITimerService/StartRaceResponse")]
+        bool StartRace(string raceSid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -90,6 +96,14 @@ namespace WRT.Client.TimerService {
         
         public WRT.Core.BLL.Competitor[] GetCompetitors(string raceSid) {
             return base.Channel.GetCompetitors(raceSid);
+        }
+        
+        public WRT.Core.BLL.Race GetRace(string raceSid) {
+            return base.Channel.GetRace(raceSid);
+        }
+        
+        public bool StartRace(string raceSid) {
+            return base.Channel.StartRace(raceSid);
         }
     }
 }

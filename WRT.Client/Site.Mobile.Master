@@ -7,8 +7,43 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+        <script>
+function startTime(hours, minutes, seconds) {
+
+var el = document.getElementById('seconds-counter');
+
+function incrementSeconds() {
+    seconds += 1;
+    
+    //add minutes or hours when needed
+    if(seconds==60)
+    {seconds=0;
+    minutes+=1;}
+    if(minutes==60)
+    {minutes=0;
+    hours+=1;}
+    
+    //init display objects
+    var hourDisplay = hours;
+    var minutesDisplay = minutes;
+    var secondsDisplay = seconds;
+        
+    //add 0 if only one letter
+    if(hours.toString().length==1)
+       {hourDisplay="0"+hourDisplay;}
+    if(minutes.toString().length==1)
+       {minutesDisplay="0"+minutesDisplay;}
+    if(seconds.toString().length==1){
+    	secondsDisplay="0"+secondsDisplay;}
+       
+    el.innerText =  hourDisplay + ":"+ minutesDisplay + ":"+ secondsDisplay;
+}
+
+var cancel = setInterval(incrementSeconds, 1000);
+}
+</script>
 </head>
-<body>
+<body  onload="startTime(0,9,7)">
     <form id="form1" runat="server">
     <div>
         <h1>Mobile Master Page</h1>

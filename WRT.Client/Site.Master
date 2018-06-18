@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>
-<body onload="ClickButton();">
+<body   id="pageBody" runat="server">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -23,8 +23,8 @@
         </asp:ScriptManager>
         <header>
             <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title"><a runat="server" href="~/">Ilab Positioning System</a></p>
+                <div class="two">
+                    <p class="site-title" id="headerText" runat="server"><a runat="server" href="~/">Gullbranna Race Timer</a></p>
                 </div>
             </div>
         </header>
@@ -37,7 +37,7 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; <%: DateTime.Now.Year %> - ILAB Container</p>
+                    <p>&copy; <%: DateTime.Now.Year %> - Webric</p>
                 </div>
             </div>
         </footer>

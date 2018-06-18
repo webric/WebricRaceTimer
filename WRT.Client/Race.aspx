@@ -7,71 +7,43 @@
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <div style="text-align: center">
-        <h2>Tiden</h2>
-        <p>
-            <asp:TextBox runat="server" ID="txtExistingRaceSid" Width="250px"></asp:TextBox><br />
-            <asp:Button runat="server" ID="btnExistingRaceSid" Text="Öppna befintligt loop" Width="250px" OnClick="btnExistingRaceSid_OnClick" /><br />
-        </p>
-        <p>
-            <asp:Button runat="server" ID="btnAddCompetitor" Text="Lägg till löpare" Width="250px" OnClick="BtnAddCompetitor_OnClick" /><br />
-        </p>
-        <h2>Placeringar</h2>
-        <p>
-            <asp:Button runat="server" ID="btnStatusTom" Text="Jag är tom" Width="250px" OnClick="btnStatusTom_OnClick" /><br />
-            <asp:Button runat="server" ID="btnStatusHalv" Text="Jag är halvfull" Width="250px" OnClick="btnStatusHalv_OnClick" /><br />
-            <asp:Button runat="server" ID="btnStatusFull" Text="Jag är full" Width="250px" OnClick="btnStatusFull_OnClick" /><br />
-            <asp:Button runat="server" ID="btnStatusLost" Text="Jag är lost" Width="250px" OnClick="btnStatusLost_OnClick" />
-        </p>
-        <h2>Var är jag?</h2>
-        <p>
-            Longitud:&nbsp;<asp:Label ID="lblLongitud" runat="server"></asp:Label>
-            <br />
-            Latitud:&nbsp;<asp:Label ID="lblLatitude" runat="server"></asp:Label>
-            <br />
-            Noggrannhet:&nbsp;<asp:Label ID="lblNoggranhet" runat="server"></asp:Label>
-        </p>
-        <h2>Pinga</h2>
-        <p>
-            <asp:Button runat="server" ID="btnSkickaPing" Text="Skicka bara koordinater" Width="250px" OnClick="btnSkickaPing_OnClick" />
-        </p>
-
-        <div id="divMap">Ingen karta kan visas</div>
-        <asp:HiddenField runat="server" ID="hidLongitude" />
-        <asp:HiddenField runat="server" ID="hidLatutude" />
-        <asp:HiddenField runat="server" ID="hidNoggranhet" />
+        <div id='seconds-counter' style='font-size: 80px; font-style: bolder; font-family: verdana'></div>
     </div>
     <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
     <script>
-        function successHandler(location) {
-            document.getElementById("MainContent_lblLongitud").innerHTML = location.coords.longitude;
-            document.getElementById("MainContent_hidLongitude").value = location.coords.longitude;
-            document.getElementById("MainContent_lblLatitude").innerHTML = location.coords.latitude;
-            document.getElementById("MainContent_hidLatutude").value = location.coords.latitude;
-            document.getElementById("MainContent_lblNoggranhet").innerHTML = location.coords.accuracy;
-            document.getElementById("MainContent_hidNoggranhet").value = location.coords.accuracy;
+        function startTime(hours, minutes, seconds, running) {
 
-            var map = document.getElementById("divMap"), html = [];
-            html.push("<img width='256' height='256' src='http://maps.google.com/maps/api/staticmap?center=", location.coords.latitude, ",", location.coords.longitude, "&markers=size:small|color:blue|", location.coords.latitude, ",", location.coords.longitude, "&zoom=14&size=250x250&sensor=false' />");
-            map.innerHTML = html.join("");
-        }
-        function errorHandler(error) {
-            alert('Attempt to get location failed: ' + error.message);
-        }
-        navigator.geolocation.getCurrentPosition(successHandler, errorHandler);
-    </script>
-    <script>
-        function ClickButton() {
-            //sleep(300000000000);
+            var el = document.getElementById('seconds-counter');
 
-            //document.getElementById('MainContent_btnSkickaPing').click();
-        }
-        function sleep(milliseconds) {
-            var start = new Date().getTime();
-            for (var i = 0; i < 1e7; i++) {
-                if ((new Date().getTime() - start) > milliseconds) {
-                    break;
+            function incrementSeconds() {
+                if (running) { seconds += 1; }
+
+                //add minutes or hours when needed
+                if (seconds == 60) {
+                    seconds = 0;
+                    minutes += 1;
                 }
+                if (minutes == 60) {
+                    minutes = 0;
+                    hours += 1;
+                }
+
+                //init display objects
+                var hourDisplay = hours;
+                var minutesDisplay = minutes;
+                var secondsDisplay = seconds;
+
+                //add 0 if only one letter
+                if (hours.toString().length == 1) { hourDisplay = "0" + hourDisplay; }
+                if (minutes.toString().length == 1) { minutesDisplay = "0" + minutesDisplay; }
+                if (seconds.toString().length == 1) {
+                    secondsDisplay = "0" + secondsDisplay;
+                }
+
+                el.innerText = hourDisplay + ":" + minutesDisplay + ":" + secondsDisplay;
             }
+
+            var cancel = setInterval(incrementSeconds, 1000);
         }
     </script>
 </asp:Content>

@@ -49,6 +49,18 @@
   <wsdl:message name="ITimerService_GetCompetitors_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCompetitorsResponse" />
   </wsdl:message>
+  <wsdl:message name="ITimerService_GetRace_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRace" />
+  </wsdl:message>
+  <wsdl:message name="ITimerService_GetRace_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITimerService_StartRace_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartRace" />
+  </wsdl:message>
+  <wsdl:message name="ITimerService_StartRace_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartRaceResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITimerService">
     <wsdl:operation name="InitRace">
       <wsdl:input wsaw:Action="http://tempuri.org/ITimerService/InitRace" message="tns:ITimerService_InitRace_InputMessage" />
@@ -77,6 +89,14 @@
     <wsdl:operation name="GetCompetitors">
       <wsdl:input wsaw:Action="http://tempuri.org/ITimerService/GetCompetitors" message="tns:ITimerService_GetCompetitors_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITimerService/GetCompetitorsResponse" message="tns:ITimerService_GetCompetitors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRace">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITimerService/GetRace" message="tns:ITimerService_GetRace_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITimerService/GetRaceResponse" message="tns:ITimerService_GetRace_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartRace">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITimerService/StartRace" message="tns:ITimerService_StartRace_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITimerService/StartRaceResponse" message="tns:ITimerService_StartRace_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITimerService" type="tns:ITimerService">
@@ -137,6 +157,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetCompetitors">
       <soap:operation soapAction="http://tempuri.org/ITimerService/GetCompetitors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRace">
+      <soap:operation soapAction="http://tempuri.org/ITimerService/GetRace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartRace">
+      <soap:operation soapAction="http://tempuri.org/ITimerService/StartRace" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

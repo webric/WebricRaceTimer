@@ -18,4 +18,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCompetitor" nillable="true" type="tns:ArrayOfCompetitor" />
+  <xs:complexType name="Race">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdminId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Finnished" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RaceSid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StopTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TimeStamp" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Race" nillable="true" type="tns:Race" />
 </xs:schema>

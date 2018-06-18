@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using WRT.Core.BLL;
 using WRT.Core.Util;
@@ -12,14 +14,48 @@ namespace WRT.Client
 {
     public partial class _Race : Page
     {
-        private string RaceSid;
+        private string raceSid;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            RaceSid = Request.QueryString["race"];
+             raceSid = Request.QueryString["race"];
 
-            if (!Page.IsPostBack)
+            if (raceSid != "" && raceSid != null)
             {
+                if (!Page.IsPostBack)
+                {
+                    var timer = new TimerService.TimerServiceClient();
+                    var race = timer.GetRace(raceSid);
+
+                    //Om loppet startat - sätt starttid i siten
+                    HtmlGenericControl body = (HtmlGenericControl)Master.FindControl("pageBody");
+                    HtmlGenericControl header = (HtmlGenericControl)Master.FindControl("headerText");
+
+                    header.InnerText = race.Name;
+
+                    if (race.StartTime != null)
+                    {
+                        TimeSpan diff = DateTime.Now.Subtract(DateTime.Parse(race.StartTime.ToString()));
+
+                        var builder = new StringBuilder();
+                        builder.Append("startTime(");
+                        builder.Append(diff.Hours);
+                        builder.Append(",");
+                        builder.Append(diff.Minutes);
+                        builder.Append(",");
+                        builder.Append(diff.Seconds);
+                        builder.Append(",true");
+                        body.Attributes.Add("onload", builder.ToString());
+                    }
+                    else
+                    {
+                        body.Attributes.Add("onload", "startTime(0,0,0,false)");
+                    }
+                }
+            }
+            else
+            {
+                Response.Redirect("default.aspx");
             }
         }
 

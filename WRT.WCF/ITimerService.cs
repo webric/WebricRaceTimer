@@ -32,5 +32,11 @@ namespace WRT.WCF
 
         [OperationContract]
         List<Competitor> GetCompetitors(string raceSid);
+
+        [OperationContract]
+        Race GetRace(string raceSid);
+
+        [OperationContract]
+        bool StartRace(string raceSid);
     }
 }
