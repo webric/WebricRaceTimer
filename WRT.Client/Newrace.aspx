@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NewRace.aspx.cs" Inherits="WRT.Client._NewRace" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NewRace.aspx.cs" Inherits="WRT.Client._NewRace" %>
 
 <asp:Content runat="server" ID="HeadContent" ContentPlaceHolderID="HeadContent">
     <meta http-equiv="refresh" content="60">
@@ -11,7 +11,7 @@
         <p>
             <label>Namn</label><br />
             <asp:TextBox runat="server" ID="txtRaceName" Width="250px"></asp:TextBox><br />
-            <asp:Button runat="server" ID="btnSaveNewRace" Text="Spara" Width="250px" OnClick="BtnSaveNewRace_OnClick" /><br />
+            <asp:Button runat="server" ID="btnSaveNewRace" Text="Skapa nytt lopp" Width="250px" OnClick="BtnSaveNewRace_OnClick" /><br />
         </p>
     </div>
     <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WRT.Client._Default" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WRT.Client._Default" %>
 
 <asp:Content runat="server" ID="HeadContent" ContentPlaceHolderID="HeadContent">
     <meta http-equiv="refresh" content="60">

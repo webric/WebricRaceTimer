@@ -4,9 +4,8 @@
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title>Gullbranna Race Timer</title>
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <asp:PlaceHolder runat="server">
         <script src="<%: ResolveUrl("~/Scripts/modernizr-2.6.2.js") %>"></script>
     </asp:PlaceHolder>
@@ -36,8 +35,8 @@
         </div>
         <footer>
             <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; <%: DateTime.Now.Year %> - Webric</p>
+                <div class="two">
+                    <p class="site-title" id="siteid" runat="server"></p>
                 </div>
             </div>
         </footer>

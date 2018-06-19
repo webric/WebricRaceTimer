@@ -13,15 +13,6 @@ namespace WRT.Client {
     public partial class _NewCompetitor {
         
         /// <summary>
-        /// btnToRace control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnToRace;
-        
-        /// <summary>
         /// lblComfirmationText control.
         /// </summary>
         /// <remarks>

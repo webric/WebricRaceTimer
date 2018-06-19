@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Race.aspx.cs" Inherits="WRT.Client._Race" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Race.aspx.cs" Inherits="WRT.Client._Race" %>
 
 <asp:Content runat="server" ID="HeadContent" ContentPlaceHolderID="HeadContent">
     <meta http-equiv="refresh" content="60">
@@ -7,7 +7,7 @@
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <div style="text-align: center">
-        <div id='seconds-counter' style='font-size: 80px; font-style: bolder; font-family: verdana'></div>
+        <div id='seconds-counter' style='font-size: 80px; font-weight: bolder; font-family: Verdana, Helvetica, Sans-Serif;'></div>
     </div>
     <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
     <script>

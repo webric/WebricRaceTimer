@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="IPS.Monitor._Default" %>
+﻿<%@ Page Title="Gullbranna Race Timer" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="IPS.Monitor._Default" %>
 
 <asp:Content runat="server" ID="HeadContent" ContentPlaceHolderID="HeadContent">
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBjJ2GqtZh30u4OBF52GDD5K56NQWGr-YQ&sensor=false">

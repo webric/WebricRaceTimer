@@ -8,12 +8,16 @@ namespace WRT.Core.BLL
     {
         public static Race Init(string name)
         {
+            var newRaceSid = GenerateRaceSid();
+            while (GetRace(newRaceSid).RaceSid != null)
+                newRaceSid = GenerateRaceSid();
+
             var race = new Race
             {
                 Id = Guid.NewGuid(),
                 Name = name,
                 AdminId = GenerateAdminId(),
-                RaceSid = GenerateRaceSid(),
+                RaceSid = newRaceSid,
                 StartTime = null,
                 StopTime = null,
                 Finnished = false

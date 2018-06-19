@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WRT.Monitor {
+namespace IPS.Monitor {
     
     
     public partial class _Default {

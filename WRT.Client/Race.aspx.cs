@@ -18,7 +18,7 @@ namespace WRT.Client
 
         protected void Page_Load(object sender, EventArgs e)
         {
-             raceSid = Request.QueryString["race"];
+            raceSid = Request.QueryString["race"];
 
             if (raceSid != "" && raceSid != null)
             {
@@ -27,11 +27,16 @@ namespace WRT.Client
                     var timer = new TimerService.TimerServiceClient();
                     var race = timer.GetRace(raceSid);
 
+                    if (race.RaceSid is null)
+                        Response.Redirect("default.aspx");
+
                     //Om loppet startat - sätt starttid i siten
                     HtmlGenericControl body = (HtmlGenericControl)Master.FindControl("pageBody");
                     HtmlGenericControl header = (HtmlGenericControl)Master.FindControl("headerText");
+                    HtmlGenericControl siteid = (HtmlGenericControl)Master.FindControl("siteid");
 
                     header.InnerText = race.Name;
+                    siteid.InnerHtml = "gb.webric.se id: <span style='color: red;'>" + raceSid + "</span>";
 
                     if (race.StartTime != null)
                     {
@@ -44,7 +49,7 @@ namespace WRT.Client
                         builder.Append(diff.Minutes);
                         builder.Append(",");
                         builder.Append(diff.Seconds);
-                        builder.Append(",true");
+                        builder.Append(",true)");
                         body.Attributes.Add("onload", builder.ToString());
                     }
                     else

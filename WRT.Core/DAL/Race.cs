@@ -54,17 +54,10 @@ namespace WRT.Core.DAL
 
         public static bool StartRace(string raceSid)
         {
-            var race = new BLL.Race
-            {
-                RaceSid = raceSid,
-                StartTime = DateTime.Now,
-                TimeStamp = DateTime.Now,
-                AdminId = null,
-                Finnished = null,
-                Id = null,
-                Name = null,
-                StopTime = null
-            };
+            var race = GetRace(raceSid);
+
+            race.StartTime = DateTime.Now;
+            race.TimeStamp = DateTime.Now;
 
             Insert(race);
 
