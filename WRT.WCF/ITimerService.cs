@@ -18,8 +18,8 @@ namespace WRT.WCF
         [OperationContract]
         Competitor CreateCompetitor(string number, string name);
 
-        [OperationContract]
-        bool StartCompetitor(string raceSid, string competitorSid, DateTime time);
+        //[OperationContract]
+        //bool StartCompetitor(string raceSid, string competitorSid, DateTime time);
 
         [OperationContract]
         bool StartAll(string raceSid, DateTime time);
@@ -28,7 +28,7 @@ namespace WRT.WCF
         bool FinnishCompetitor(string raceSid, string competitorSid, DateTime time);
 
         [OperationContract]
-        bool FinnishRace(string raceSid, DateTime time);
+        bool FinnishRace(string raceSid);
 
         [OperationContract]
         List<Competitor> GetCompetitors(string raceSid);

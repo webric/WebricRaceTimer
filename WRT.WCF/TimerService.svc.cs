@@ -37,9 +37,9 @@ namespace WRT.WCF
             return Competitor.Finnish(raceSid, competitorSid, time);
         }
 
-        public bool FinnishRace(string raceSid, DateTime time)
+        public bool FinnishRace(string raceSid)
         {
-            return Race.Finnish(raceSid, time);
+            return Race.Finnish(raceSid);
         }
 
         public List<Competitor> GetCompetitors(String raceSid)

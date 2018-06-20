@@ -30,9 +30,9 @@ namespace WRT.Core.BLL
                 return false;
         }
 
-        public static bool Finnish(string raceSid, DateTime time)
+        public static bool Finnish(string raceSid)
         {
-            if (DAL.Race.Finnish(raceSid, time))
+            if (DAL.Race.Finnish(raceSid))
                 return true;
             else
                 return false;

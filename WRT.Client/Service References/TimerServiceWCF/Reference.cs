@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WRT.Client.TimerServiceLocal {
+namespace WRT.Client.TimerServiceWCF {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TimerServiceLocal.ITimerService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TimerServiceWCF.ITimerService")]
     public interface ITimerService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/InitRace", ReplyAction="http://tempuri.org/ITimerService/InitRaceResponse")]
@@ -44,12 +44,12 @@ namespace WRT.Client.TimerServiceLocal {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ITimerServiceChannel : WRT.Client.TimerServiceLocal.ITimerService, System.ServiceModel.IClientChannel {
+    public interface ITimerServiceChannel : WRT.Client.TimerServiceWCF.ITimerService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TimerServiceClient : System.ServiceModel.ClientBase<WRT.Client.TimerServiceLocal.ITimerService>, WRT.Client.TimerServiceLocal.ITimerService {
+    public partial class TimerServiceClient : System.ServiceModel.ClientBase<WRT.Client.TimerServiceWCF.ITimerService>, WRT.Client.TimerServiceWCF.ITimerService {
         
         public TimerServiceClient() {
         }

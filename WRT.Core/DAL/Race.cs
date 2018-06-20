@@ -8,27 +8,22 @@ namespace WRT.Core.DAL
 {
     public class Race : DALBase
     {
-        public static bool Finnish(string raceSid, DateTime time)
+        public static bool Finnish(string raceSid)
         {
-            var builder = new StringBuilder();
-            builder.Append(" UPDATE [Race] SET ");
-            builder.Append(" [Finnished] = @Finnished ");
-            builder.Append(" [StopTime] = @StopTime");
-            builder.Append(" WHERE ");
-            builder.Append(" [RaceId] = @RaceId ");
+            var race = GetRace(raceSid);
 
-            var parameters = new SqlParameter[2];
-            parameters[0] = new SqlParameter("@RaceId", SqlDbType.VarChar, 6) { Value = raceSid };
-            parameters[1] = new SqlParameter("@Finnished", SqlDbType.Bit) { Value = true };
-            parameters[2] = new SqlParameter("@StopTime", SqlDbType.DateTime) { Value = time };
+            race.StopTime = DateTime.Now;
+            race.TimeStamp = DateTime.Now;
 
-            ExecuteQuery(builder.ToString(), ref parameters);
+            Insert(race);
 
             return true;
         }
 
         public static bool StartAll(string raceSid, DateTime time)
         {
+            throw new NotImplementedException();
+
             var builder = new StringBuilder();
             builder.Append(" UPDATE [Race] SET ");
             builder.Append(" [StartTime] = @StartTime ");
