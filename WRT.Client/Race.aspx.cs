@@ -62,6 +62,10 @@ namespace WRT.Client
             {
                 Response.Redirect("default.aspx");
             }
+
+            //Load competitors
+            //competitorTable.
+            competitorTable.DataBind();
         }
 
         protected void BtnAddCompetitor_OnClick(object sender, EventArgs e)

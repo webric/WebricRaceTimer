@@ -29,6 +29,18 @@ namespace WRT.Core.DAL
             return true;
         }
 
+        public static bool Start(string raceId, string competitorSid, DateTime? startTime)
+        {
+            var competitor = GetCompetitor(competitorSid);
+
+            competitor.StartTime = startTime;
+            competitor.TimeStamp = DateTime.Now;
+
+            Insert(competitor);
+
+            return true;
+        }
+
         public static bool Stop(string raceSId, string competitorSid)
         {
             var competitor = GetCompetitor(competitorSid);

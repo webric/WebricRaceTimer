@@ -46,4 +46,7 @@
             var cancel = setInterval(incrementSeconds, 1000);
         }
     </script>
+
+    <br />
+    <asp:Table runat="server" ID="competitorTable"></asp:Table>
 </asp:Content>

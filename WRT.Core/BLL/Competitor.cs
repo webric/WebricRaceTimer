@@ -29,10 +29,14 @@ namespace WRT.Core.BLL
 
         public static bool Finnish(string raceSid, string competitorSid)
         {
-            if (DAL.Competitor.Stop(raceSid, competitorSid))
-                return true;
-            else
-                return false;
+            //Finnish the competitor
+            DAL.Competitor.Stop(raceSid, competitorSid);
+            
+            //Set correct starttime (because we dont know it correct starttime was set before)
+            var race = Race.GetRace(raceSid);
+            DAL.Competitor.Start(raceSid, competitorSid, race.StartTime);
+            return true;
+            
         }
 
         public static Competitor GetCompetitor(string competitorSid)
