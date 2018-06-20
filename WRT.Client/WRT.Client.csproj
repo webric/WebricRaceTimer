@@ -171,6 +171,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="StopCompetitor.aspx" />
     <Content Include="StopRace.aspx" />
     <Content Include="StartRace.aspx" />
     <Content Include="NewRace.aspx" />
@@ -231,6 +232,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="StopCompetitor.aspx.cs">
+      <DependentUpon>StopCompetitor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StopCompetitor.aspx.designer.cs">
+      <DependentUpon>StopCompetitor.aspx</DependentUpon>
     </Compile>
     <Compile Include="StopRace.aspx.cs">
       <DependentUpon>StopRace.aspx</DependentUpon>

@@ -11,7 +11,7 @@ using WRT.Core.Util;
 
 namespace WRT.Client
 {
-    public partial class _StopRace : Page
+    public partial class _StopCompetitor : Page
     {
         private string raceSid;
 
@@ -39,10 +39,10 @@ namespace WRT.Client
             }
         }
 
-        protected void BtnStopRace_OnClick(object sender, EventArgs e)
+        protected void BtnStopCompetitor_OnClick(object sender, EventArgs e)
         {
             var timer = new TimerService.TimerServiceClient();
-            timer.FinnishRace(raceSid);
+            timer.FinnishCompetitor(raceSid, txtCompetitorNumber.Text);
 
             Response.Redirect("race.aspx?race=" + raceSid);
         }

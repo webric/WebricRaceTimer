@@ -19,17 +19,17 @@ namespace WRT.Core.BLL
                 return null;
         }
 
-        public static bool Start(string raceSid, string competitorSid, DateTime time)
+        public static bool Start(string raceSid, string competitorSid)
         {
-            if (DAL.Competitor.Start(raceSid, competitorSid, time))
+            if (DAL.Competitor.Start(raceSid, competitorSid))
                 return true;
             else
                 return false;
         }
 
-        public static bool Finnish(string raceSid, string competitorSid, DateTime time)
+        public static bool Finnish(string raceSid, string competitorSid)
         {
-            if (DAL.Competitor.Stop(raceSid, competitorSid, time))
+            if (DAL.Competitor.Stop(raceSid, competitorSid))
                 return true;
             else
                 return false;

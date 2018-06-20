@@ -25,7 +25,7 @@ namespace WRT.Client.TimerService {
         bool StartAll(string raceSid, System.DateTime time);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/FinnishCompetitor", ReplyAction="http://tempuri.org/ITimerService/FinnishCompetitorResponse")]
-        bool FinnishCompetitor(string raceSid, string competitorSid, System.DateTime time);
+        bool FinnishCompetitor(string raceSid, string competitorSid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/FinnishRace", ReplyAction="http://tempuri.org/ITimerService/FinnishRaceResponse")]
         bool FinnishRace(string raceSid);
@@ -79,8 +79,8 @@ namespace WRT.Client.TimerService {
             return base.Channel.StartAll(raceSid, time);
         }
         
-        public bool FinnishCompetitor(string raceSid, string competitorSid, System.DateTime time) {
-            return base.Channel.FinnishCompetitor(raceSid, competitorSid, time);
+        public bool FinnishCompetitor(string raceSid, string competitorSid) {
+            return base.Channel.FinnishCompetitor(raceSid, competitorSid);
         }
         
         public bool FinnishRace(string raceSid) {

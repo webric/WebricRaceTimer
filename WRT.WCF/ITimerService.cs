@@ -25,7 +25,7 @@ namespace WRT.WCF
         bool StartAll(string raceSid, DateTime time);
 
         [OperationContract]
-        bool FinnishCompetitor(string raceSid, string competitorSid, DateTime time);
+        bool FinnishCompetitor(string raceSid, string competitorSid);
 
         [OperationContract]
         bool FinnishRace(string raceSid);

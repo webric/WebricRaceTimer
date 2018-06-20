@@ -17,31 +17,26 @@ namespace WRT.Core.DAL
             return true;
         }
 
-        public static bool Start(string raceId, string competitorId, DateTime time)
+        public static bool Start(string raceId, string competitorSid)
         {
-            var com = new BLL.Competitor
-            {
-                Id = Guid.NewGuid(),
-                CompetitorSid = competitorId,
-                RaceSid = raceId,
-                TimeStamp = DateTime.Now
-            };
+            var competitor = GetCompetitor(competitorSid);
 
-            Insert(com);
+            competitor.StartTime = DateTime.Now;
+            competitor.TimeStamp = DateTime.Now;
+
+            Insert(competitor);
 
             return true;
         }
 
-        public static bool Stop(string raceSId, string competitorSid, DateTime time)
+        public static bool Stop(string raceSId, string competitorSid)
         {
-            var com = new BLL.Competitor
-            {
-                CompetitorSid = competitorSid,
-                RaceSid = raceSId,
-                TimeStamp = DateTime.Now
-            };
+            var competitor = GetCompetitor(competitorSid);
 
-            Insert(com);
+            competitor.StopTime = DateTime.Now;
+            competitor.TimeStamp = DateTime.Now;
+
+            Insert(competitor);
 
             return true;
         }
@@ -55,6 +50,8 @@ namespace WRT.Core.DAL
             builder.Append(" ,[RaceSid] ");
             builder.Append(" ,[Number] ");
             builder.Append(" ,[Name] ");
+            builder.Append(" ,[StartTime] ");
+            builder.Append(" ,[StopTime] ");
             builder.Append(" ,[TimeStamp] ");
             builder.Append(" ) VALUES ( ");
             builder.Append(" @Id ");
@@ -62,6 +59,8 @@ namespace WRT.Core.DAL
             builder.Append(", @RaceSid ");
             builder.Append(", @Number ");
             builder.Append(", @Name ");
+            builder.Append(", @StartTime ");
+            builder.Append(", @StopTime ");
             builder.Append(", @TimeStamp ");
             builder.Append(" ) ");
 
@@ -140,6 +139,8 @@ namespace WRT.Core.DAL
                 CompetitorSid = dr.ItemArray[2].ToString(),
                 Number = dr.ItemArray[2].ToString(),
                 Name = dr.ItemArray[3].ToString(),
+                StartTime = dr.ItemArray[4].ToString() == "" ? (DateTime?)null : DateTime.Parse(dr.ItemArray[4].ToString()),
+                StopTime = dr.ItemArray[5].ToString() == "" ? (DateTime?)null : DateTime.Parse(dr.ItemArray[5].ToString()),
                 TimeStamp = DateTime.Parse(dr.ItemArray[4].ToString()),
             };
 

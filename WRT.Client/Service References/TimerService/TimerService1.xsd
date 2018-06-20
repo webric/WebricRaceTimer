@@ -50,7 +50,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="raceSid" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="competitorSid" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="time" type="xs:dateTime" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

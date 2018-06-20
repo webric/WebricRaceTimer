@@ -22,9 +22,9 @@ namespace WRT.WCF
             return Competitor.Create(number, name);
         }
 
-        public bool StartCompetitor(string raceSid, string competitorSid, DateTime time)
+        public bool StartCompetitor(string raceSid, string competitorSid)
         {
-            return Competitor.Start(raceSid, competitorSid, time);
+            return Competitor.Start(raceSid, competitorSid);
         }
 
         public bool StartAll(string raceSid, DateTime time)
@@ -32,9 +32,9 @@ namespace WRT.WCF
             return Race.StartAll(raceSid, time);
         }
 
-        public bool FinnishCompetitor(string raceSid, string competitorSid, DateTime time)
+        public bool FinnishCompetitor(string raceSid, string competitorSid)
         {
-            return Competitor.Finnish(raceSid, competitorSid, time);
+            return Competitor.Finnish(raceSid, competitorSid);
         }
 
         public bool FinnishRace(string raceSid)
