@@ -18,13 +18,13 @@ namespace WRT.Client
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            var timer = new TimerService.TimerServiceClient();
             raceSid = Request.QueryString["race"];
 
             if (raceSid != "" && raceSid != null)
             {
                 if (!Page.IsPostBack)
                 {
-                    var timer = new TimerService.TimerServiceClient();
                     var race = timer.GetRace(raceSid);
 
                     if (race.RaceSid is null)
@@ -64,13 +64,50 @@ namespace WRT.Client
             }
 
             //Load competitors
-            //competitorTable.
-            competitorTable.DataBind();
+            var competitors = timer.GetCompetitors(raceSid);
+            var compList = new List<Core.BLL.DisplayCompetitor>();
+
+            foreach (var comp in competitors)
+            {
+                var builder = new StringBuilder();
+
+                if (comp.StopTime != null && comp.StartTime != null)
+                {
+
+                    TimeSpan diff = DateTime.Parse(comp.StopTime.ToString()).Subtract(DateTime.Parse(comp.StartTime.ToString()));
+                    if (diff.Hours.ToString().Length == 1)
+                        builder.Append("0" + diff.Hours);
+                    else
+                        builder.Append(diff.Hours);
+                    builder.Append(":");
+                    if (diff.Minutes.ToString().Length == 1)
+                        builder.Append("0" + diff.Minutes);
+                    else
+                        builder.Append(diff.Minutes);
+                    builder.Append(":");
+                    if (diff.Seconds.ToString().Length == 1)
+                        builder.Append("0" + diff.Seconds);
+                    else
+                        builder.Append(diff.Seconds);
+                }
+                else
+                    builder.Append("");
+
+                compList.Add(new DisplayCompetitor(comp.CompetitorSid, comp.Name, builder.ToString()));
+            }
+
+            rptCompetitors.DataSource = compList;
+            rptCompetitors.DataBind();
         }
 
         protected void BtnAddCompetitor_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("/NewCompetitor.aspx");
+            Response.Redirect("NewCompetitor.aspx?race=" + raceSid);
+        }
+
+        protected void BtnStopCompetitor_OnClick(object sender, EventArgs e)
+        {
+            Response.Redirect("StopCompetitor.aspx?race=" + raceSid);
         }
     }
 }

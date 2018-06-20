@@ -17,9 +17,9 @@ namespace WRT.WCF
             return race.RaceSid;
         }
 
-        public Competitor CreateCompetitor(string number, string name)
+        public Competitor CreateCompetitor(string competitorSid, string name, string raceSid)
         {
-            return Competitor.Create(number, name);
+            return Competitor.Create(competitorSid, name, raceSid);
         }
 
         public bool StartCompetitor(string raceSid, string competitorSid)

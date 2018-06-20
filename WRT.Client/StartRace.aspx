@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StartRace.aspx.cs" Inherits="WRT.Client._StartRace" %>
-<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="StartRace.aspx.cs" Inherits="WRT.Client._StartRace" %>
 
 <asp:Content runat="server" ID="HeadContent" ContentPlaceHolderID="HeadContent">
     <meta http-equiv="refresh" content="60">

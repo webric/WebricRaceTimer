@@ -12,6 +12,8 @@
             <asp:TextBox runat="server" ID="txtCompetitorNumber" Width="250px"></asp:TextBox><br />
             <asp:Button runat="server" ID="btnStopCompetitor" Text="Löparen går i mål" Width="250px" OnClick="BtnStopCompetitor_OnClick" /><br />
         </p>
+         <p> <asp:Button runat="server" ID="btnToRace" Text="Tillbaka till loppet" Width="250px" OnClick="BtnToRace_OnClick" /><br />
+     </p
     </div>
     <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
 </asp:Content>

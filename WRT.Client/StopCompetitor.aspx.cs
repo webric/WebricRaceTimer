@@ -43,7 +43,9 @@ namespace WRT.Client
         {
             var timer = new TimerService.TimerServiceClient();
             timer.FinnishCompetitor(raceSid, txtCompetitorNumber.Text);
-
+        }
+        protected void BtnToRace_OnClick(object sender, EventArgs e)
+        {
             Response.Redirect("race.aspx?race=" + raceSid);
         }
     }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BLL\Competitor.cs" />
     <Compile Include="BLL\CompetitorDO.cs" />
+    <Compile Include="BLL\DisplayCompetitor.cs" />
     <Compile Include="BLL\Time.cs" />
     <Compile Include="BLL\Race.cs" />
     <Compile Include="BLL\TimeDO.cs" />

@@ -139,7 +139,5 @@ namespace WRT.Core.DAL
 
             return rac;
         }
-
-
     }
 }

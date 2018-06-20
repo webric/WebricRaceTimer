@@ -19,7 +19,7 @@ namespace WRT.Client.TimerService {
         string InitRace(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/CreateCompetitor", ReplyAction="http://tempuri.org/ITimerService/CreateCompetitorResponse")]
-        WRT.Core.BLL.Competitor CreateCompetitor(string number, string name);
+        WRT.Core.BLL.Competitor CreateCompetitor(string competitorSid, string name, string raceSid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/StartAll", ReplyAction="http://tempuri.org/ITimerService/StartAllResponse")]
         bool StartAll(string raceSid, System.DateTime time);
@@ -71,8 +71,8 @@ namespace WRT.Client.TimerService {
             return base.Channel.InitRace(name);
         }
         
-        public WRT.Core.BLL.Competitor CreateCompetitor(string number, string name) {
-            return base.Channel.CreateCompetitor(number, name);
+        public WRT.Core.BLL.Competitor CreateCompetitor(string competitorSid, string name, string raceSid) {
+            return base.Channel.CreateCompetitor(competitorSid, name, raceSid);
         }
         
         public bool StartAll(string raceSid, System.DateTime time) {

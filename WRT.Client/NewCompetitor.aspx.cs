@@ -12,30 +12,38 @@ namespace WRT.Client
 {
     public partial class _NewCompetitor : Page
     {
-        private string RaceSid;
+        private string raceSid;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            RaceSid = Request.QueryString["race"];
+            raceSid = Request.QueryString["race"];
 
-            if (!Page.IsPostBack)
+            if (raceSid == "" || raceSid == null)
             {
+                Response.Redirect("default.aspx");
+            }
+        }
+
+        protected void BtnSaveNewCompetitor_OnClick(object sender, EventArgs e)
+        {
+            if (txtCompetitorNumber.Text != "" && txtCompetitorName.Text != "")
+            {
+                var timer = new TimerService.TimerServiceClient();
+                var competitor = timer.CreateCompetitor(txtCompetitorNumber.Text, txtCompetitorName.Text, raceSid);
+
+                lblComfirmationText.Text = string.Format("{0}, {1} tillagd", competitor.CompetitorSid, competitor.Name);
+                txtCompetitorNumber.Text = "";
+                txtCompetitorName.Text = "";
+            }
+            else
+            {
+                lblComfirmationText.Text = string.Format("Värde måste skrivas i båda fälten");
             }
         }
 
         protected void BtnToRace_OnClick(object sender, EventArgs e)
         {
-            Response.Redirect("race.aspx?race=" + RaceSid);
-        }
-
-        protected void BtnSaveNewCompetitor_OnClick(object sender, EventArgs e)
-        {
-            var timer = new TimerService.TimerServiceClient();
-            var competitor = timer.CreateCompetitor(txtCompetitorNumber.Text, txtCompetitorName.Text);
-
-            lblComfirmationText.Text = string.Format("{0}, {1} tillagd", competitor.Number, competitor.Name);
-            txtCompetitorNumber.Text = "";
-            txtCompetitorName.Text = "";
+            Response.Redirect("race.aspx?race=" + raceSid);
         }
     }
 }

@@ -46,7 +46,28 @@
             var cancel = setInterval(incrementSeconds, 1000);
         }
     </script>
+    <br />
+    <asp:Button runat="server" ID="btnAddCompetitor" Text="Ny löpare" Width="250px" OnClick="BtnAddCompetitor_OnClick" /><br />
+    <asp:Button runat="server" ID="btnStopCompetitor" Text="Stoppa löpare" Width="250px" OnClick="BtnStopCompetitor_OnClick" /><br />
 
     <br />
+    <table style="align-content: center">
+        <thead>
+            <tr>
+                <td><b>Nummer</b></td>
+                <td><b>Namn</b></td>
+                <td><b>Sluttid</b></td>
+            </tr>
+        </thead>
+        <asp:Repeater runat="server" ID="rptCompetitors">
+            <ItemTemplate>
+                <tr>
+                    <td><%# Eval("CompetitorSid") %></td>
+                    <td><%# Eval("Name") %></td>
+                    <td><%# Eval("EndTime") %></td>
+                </tr>
+            </ItemTemplate>
+        </asp:Repeater>
+    </table>
     <asp:Table runat="server" ID="competitorTable"></asp:Table>
 </asp:Content>
