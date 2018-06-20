@@ -13,6 +13,15 @@ namespace WRT.Client {
     public partial class _Race {
         
         /// <summary>
+        /// rptCompetitors control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptCompetitors;
+        
+        /// <summary>
         /// btnAddCompetitor control.
         /// </summary>
         /// <remarks>
@@ -29,23 +38,5 @@ namespace WRT.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnStopCompetitor;
-        
-        /// <summary>
-        /// rptCompetitors control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptCompetitors;
-        
-        /// <summary>
-        /// competitorTable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table competitorTable;
     }
 }

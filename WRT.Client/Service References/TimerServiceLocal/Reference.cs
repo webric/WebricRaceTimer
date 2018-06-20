@@ -8,30 +8,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WRT.Client.TimerServiceWCF {
+namespace WRT.Client.TimerServiceLocal {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TimerServiceWCF.ITimerService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TimerServiceLocal.ITimerService")]
     public interface ITimerService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/InitRace", ReplyAction="http://tempuri.org/ITimerService/InitRaceResponse")]
         string InitRace(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/CreateCompetitor", ReplyAction="http://tempuri.org/ITimerService/CreateCompetitorResponse")]
-        WRT.Core.BLL.Competitor CreateCompetitor(string number, string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/StartCompetitor", ReplyAction="http://tempuri.org/ITimerService/StartCompetitorResponse")]
-        bool StartCompetitor(string raceSid, string competitorSid, System.DateTime time);
+        WRT.Core.BLL.Competitor CreateCompetitor(string competitorSid, string name, string raceSid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/StartAll", ReplyAction="http://tempuri.org/ITimerService/StartAllResponse")]
         bool StartAll(string raceSid, System.DateTime time);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/FinnishCompetitor", ReplyAction="http://tempuri.org/ITimerService/FinnishCompetitorResponse")]
-        bool FinnishCompetitor(string raceSid, string competitorSid, System.DateTime time);
+        bool FinnishCompetitor(string raceSid, string competitorSid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/FinnishRace", ReplyAction="http://tempuri.org/ITimerService/FinnishRaceResponse")]
-        bool FinnishRace(string raceSid, System.DateTime time);
+        bool FinnishRace(string raceSid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITimerService/GetCompetitors", ReplyAction="http://tempuri.org/ITimerService/GetCompetitorsResponse")]
         WRT.Core.BLL.Competitor[] GetCompetitors(string raceSid);
@@ -44,12 +41,12 @@ namespace WRT.Client.TimerServiceWCF {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ITimerServiceChannel : WRT.Client.TimerServiceWCF.ITimerService, System.ServiceModel.IClientChannel {
+    public interface ITimerServiceChannel : WRT.Client.TimerServiceLocal.ITimerService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TimerServiceClient : System.ServiceModel.ClientBase<WRT.Client.TimerServiceWCF.ITimerService>, WRT.Client.TimerServiceWCF.ITimerService {
+    public partial class TimerServiceClient : System.ServiceModel.ClientBase<WRT.Client.TimerServiceLocal.ITimerService>, WRT.Client.TimerServiceLocal.ITimerService {
         
         public TimerServiceClient() {
         }
@@ -74,24 +71,20 @@ namespace WRT.Client.TimerServiceWCF {
             return base.Channel.InitRace(name);
         }
         
-        public WRT.Core.BLL.Competitor CreateCompetitor(string number, string name) {
-            return base.Channel.CreateCompetitor(number, name);
-        }
-        
-        public bool StartCompetitor(string raceSid, string competitorSid, System.DateTime time) {
-            return base.Channel.StartCompetitor(raceSid, competitorSid, time);
+        public WRT.Core.BLL.Competitor CreateCompetitor(string competitorSid, string name, string raceSid) {
+            return base.Channel.CreateCompetitor(competitorSid, name, raceSid);
         }
         
         public bool StartAll(string raceSid, System.DateTime time) {
             return base.Channel.StartAll(raceSid, time);
         }
         
-        public bool FinnishCompetitor(string raceSid, string competitorSid, System.DateTime time) {
-            return base.Channel.FinnishCompetitor(raceSid, competitorSid, time);
+        public bool FinnishCompetitor(string raceSid, string competitorSid) {
+            return base.Channel.FinnishCompetitor(raceSid, competitorSid);
         }
         
-        public bool FinnishRace(string raceSid, System.DateTime time) {
-            return base.Channel.FinnishRace(raceSid, time);
+        public bool FinnishRace(string raceSid) {
+            return base.Channel.FinnishRace(raceSid);
         }
         
         public WRT.Core.BLL.Competitor[] GetCompetitors(string raceSid) {
