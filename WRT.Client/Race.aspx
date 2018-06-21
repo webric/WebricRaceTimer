@@ -47,6 +47,14 @@
         }
     </script>
     <br />
+    <div style="text-align: center">
+        <p runat="server" id="buttons">
+            <asp:Button runat="server" ID="btnAddCompetitor" Text="Ny löpare" Width="200px" OnClick="BtnAddCompetitor_OnClick" />
+            <asp:Button runat="server" ID="btnStopCompetitor" Text="Stoppa löpare" Width="200px" OnClick="BtnStopCompetitor_OnClick" />
+            <asp:Button runat="server" ID="btnStartRace" Text="Starta loppet" Width="200px" OnClick="BtnStartRace_OnClick" />
+        </p>
+        <br />
+    </div>
     <table style="margin: auto;">
         <thead>
             <tr>
@@ -65,10 +73,4 @@
             </ItemTemplate>
         </asp:Repeater>
     </table>
-    <br />
-     <div style="text-align: center">
-        <p>
-     <asp:Button runat="server" ID="btnAddCompetitor" Text="Ny löpare" Width="250px"  OnClick="BtnAddCompetitor_OnClick" /><br />
-    <asp:Button runat="server" ID="btnStopCompetitor" Text="Stoppa löpare" Width="250px" OnClick="BtnStopCompetitor_OnClick" /><br />
-   </p></div>
 </asp:Content>

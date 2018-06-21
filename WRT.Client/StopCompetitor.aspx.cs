@@ -35,7 +35,7 @@ namespace WRT.Client
                 HtmlGenericControl siteid = (HtmlGenericControl)Master.FindControl("siteid");
 
                 header.InnerText = race.Name;
-                siteid.InnerText = "gb.webric.se id:" + raceSid;
+                siteid.InnerHtml = "gb.webric.se id:<span style='color: red;'>" + raceSid + "</span>";
             }
         }
 
@@ -43,6 +43,8 @@ namespace WRT.Client
         {
             var timer = new TimerService.TimerServiceClient();
             timer.FinnishCompetitor(raceSid, txtCompetitorNumber.Text);
+
+            txtCompetitorNumber.Text = "";
         }
         protected void BtnToRace_OnClick(object sender, EventArgs e)
         {

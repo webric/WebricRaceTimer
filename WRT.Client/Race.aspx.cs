@@ -15,17 +15,42 @@ namespace WRT.Client
     public partial class _Race : Page
     {
         private string raceSid;
+        private string adminSid;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             var timer = new TimerService.TimerServiceClient();
-            raceSid = Request.QueryString["race"];
+
+            var query = Request.QueryString["race"];
+            if (query != null)
+            {
+                if (query.Length > 3)
+                    raceSid = query.Substring(0, 4);
+                if (query.Length > 6)
+                    adminSid = query.Substring(4, 3);
+            }
+
+            if (adminSid == "777")
+                buttons.Visible = true;
+            else
+                buttons.Visible = false;
 
             if (raceSid != "" && raceSid != null)
             {
                 if (!Page.IsPostBack)
                 {
                     var race = timer.GetRace(raceSid);
+
+                    if (race.StartTime != null)
+                    {
+                        btnStartRace.Visible = false;
+                        btnStopCompetitor.Visible = true;
+                    }
+                    else
+                    {
+                        btnStartRace.Visible = true;
+                        btnStopCompetitor.Visible = true;
+                    }
 
                     if (race.RaceSid is null)
                         Response.Redirect("default.aspx");
@@ -36,7 +61,7 @@ namespace WRT.Client
                     HtmlGenericControl siteid = (HtmlGenericControl)Master.FindControl("siteid");
 
                     header.InnerText = race.Name;
-                    siteid.InnerHtml = "gb.webric.se id: <span style='color: red;'>" + raceSid + "</span>";
+                    siteid.InnerHtml = "gb.webric.se id:<span style='color: red;'>" + raceSid + "</span>";
 
                     if (race.StartTime != null)
                     {
@@ -108,6 +133,12 @@ namespace WRT.Client
         protected void BtnStopCompetitor_OnClick(object sender, EventArgs e)
         {
             Response.Redirect("StopCompetitor.aspx?race=" + raceSid);
+        }
+
+
+        protected void BtnStartRace_OnClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Startrace.aspx?race=" + raceSid);
         }
     }
 }

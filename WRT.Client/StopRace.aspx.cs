@@ -35,7 +35,7 @@ namespace WRT.Client
                 HtmlGenericControl siteid = (HtmlGenericControl)Master.FindControl("siteid");
 
                 header.InnerText = race.Name;
-                siteid.InnerText = "gb.webric.se id:" + raceSid;
+                siteid.InnerHtml = "gb.webric.se id:<span style='color: red;'>" + raceSid + "</span>";
             }
         }
 

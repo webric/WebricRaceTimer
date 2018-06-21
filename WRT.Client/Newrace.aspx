@@ -10,8 +10,8 @@
         <h2>Skapa nytt lopp</h2>
         <p>
             <label>Namn</label><br />
-            <asp:TextBox runat="server" ID="txtRaceName" Width="250px"></asp:TextBox><br />
-            <asp:Button runat="server" ID="btnSaveNewRace" Text="Skapa nytt lopp" Width="250px" OnClick="BtnSaveNewRace_OnClick" /><br />
+            <asp:TextBox runat="server" ID="txtRaceName" Width="200px"></asp:TextBox><br />
+            <asp:Button runat="server" ID="btnSaveNewRace" Text="Skapa nytt lopp" Width="200px" OnClick="BtnSaveNewRace_OnClick" /><br />
         </p>
     </div>
     <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />

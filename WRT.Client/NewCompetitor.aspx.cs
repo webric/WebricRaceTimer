@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using WRT.Core.BLL;
 using WRT.Core.Util;
@@ -22,6 +23,15 @@ namespace WRT.Client
             {
                 Response.Redirect("default.aspx");
             }
+
+            var timer = new TimerService.TimerServiceClient();
+            var race = timer.GetRace(raceSid);
+
+            HtmlGenericControl header = (HtmlGenericControl)Master.FindControl("headerText");
+            HtmlGenericControl siteid = (HtmlGenericControl)Master.FindControl("siteid");
+
+            header.InnerText = race.Name;
+            siteid.InnerHtml = "gb.webric.se id:<span style='color: red;'>" + raceSid + "</span>";
         }
 
         protected void BtnSaveNewCompetitor_OnClick(object sender, EventArgs e)
