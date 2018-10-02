@@ -55,22 +55,24 @@
         </p>
         <br />
     </div>
-    <table style="margin: auto;">
-        <thead>
-            <tr>
-                <td><b>Nummer</b></td>
-                <td><b>Namn</b></td>
-                <td><b>Sluttid</b></td>
-            </tr>
-        </thead>
-        <asp:Repeater runat="server" ID="rptCompetitors">
-            <ItemTemplate>
+    <div runat="server" id="CompList" visible="false">
+        <table style="margin: auto;">
+            <thead>
                 <tr>
-                    <td><%# Eval("CompetitorSid") %></td>
-                    <td><%# Eval("Name") %></td>
-                    <td><%# Eval("EndTime") %></td>
+                    <td><b>Nummer</b></td>
+                    <td><b>Namn</b></td>
+                    <td><b>Sluttid</b></td>
                 </tr>
-            </ItemTemplate>
-        </asp:Repeater>
-    </table>
+            </thead>
+            <asp:Repeater runat="server" ID="rptCompetitors">
+                <ItemTemplate>
+                    <tr>
+                        <td><%# Eval("CompetitorSid") %></td>
+                        <td><%# Eval("Name") %></td>
+                        <td><%# Eval("EndTime") %></td>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+        </table>
+    </div>
 </asp:Content>

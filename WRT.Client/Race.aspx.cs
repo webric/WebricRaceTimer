@@ -89,40 +89,47 @@ namespace WRT.Client
             }
 
             //Load competitors
-            var competitors = timer.GetCompetitors(raceSid);
-            var compList = new List<Core.BLL.DisplayCompetitor>();
+            //var competitors = timer.GetCompetitors(raceSid);
+            //var compList = new List<Core.BLL.DisplayCompetitor>();
 
-            foreach (var comp in competitors)
-            {
-                var builder = new StringBuilder();
+            //if (competitors.Count() > 0)
+            //{
+            //    CompList.Visible = true;
 
-                if (comp.StopTime != null && comp.StartTime != null)
-                {
+            //    foreach (var comp in competitors)
+            //    {
+            //        var builder = new StringBuilder();
 
-                    TimeSpan diff = DateTime.Parse(comp.StopTime.ToString()).Subtract(DateTime.Parse(comp.StartTime.ToString()));
-                    if (diff.Hours.ToString().Length == 1)
-                        builder.Append("0" + diff.Hours);
-                    else
-                        builder.Append(diff.Hours);
-                    builder.Append(":");
-                    if (diff.Minutes.ToString().Length == 1)
-                        builder.Append("0" + diff.Minutes);
-                    else
-                        builder.Append(diff.Minutes);
-                    builder.Append(":");
-                    if (diff.Seconds.ToString().Length == 1)
-                        builder.Append("0" + diff.Seconds);
-                    else
-                        builder.Append(diff.Seconds);
-                }
-                else
-                    builder.Append("");
+            //        if (comp.StopTime != null && comp.StartTime != null)
+            //        {
 
-                compList.Add(new DisplayCompetitor(comp.CompetitorSid, comp.Name, builder.ToString()));
-            }
+            //            TimeSpan diff = DateTime.Parse(comp.StopTime.ToString()).Subtract(DateTime.Parse(comp.StartTime.ToString()));
+            //            if (diff.Hours.ToString().Length == 1)
+            //                builder.Append("0" + diff.Hours);
+            //            else
+            //                builder.Append(diff.Hours);
+            //            builder.Append(":");
+            //            if (diff.Minutes.ToString().Length == 1)
+            //                builder.Append("0" + diff.Minutes);
+            //            else
+            //                builder.Append(diff.Minutes);
+            //            builder.Append(":");
+            //            if (diff.Seconds.ToString().Length == 1)
+            //                builder.Append("0" + diff.Seconds);
+            //            else
+            //                builder.Append(diff.Seconds);
+            //        }
+            //        else
+            //            builder.Append("");
 
-            rptCompetitors.DataSource = compList;
-            rptCompetitors.DataBind();
+            //        compList.Add(new DisplayCompetitor(comp.CompetitorSid, comp.Name, builder.ToString()));
+            //    }
+
+            //    rptCompetitors.DataSource = compList;
+            //    rptCompetitors.DataBind();
+            //}
+            //else
+            //    CompList.Visible = false;
         }
 
         protected void BtnAddCompetitor_OnClick(object sender, EventArgs e)
